@@ -1,6 +1,4 @@
 import { createSlice } from '@reduxjs/toolkit';
-import { nanoid } from 'nanoid';
-import { toast } from 'react-toastify';
 
 const localStorageKey = 'contacts';
 
@@ -11,7 +9,6 @@ const getInitialContacts = () => {
   }
   return [];
 };
-// console.log(getInitialContacts());
 
 const initialState = {
   contacts: getInitialContacts(),
@@ -21,28 +18,15 @@ export const contactsSlice = createSlice({
   name: 'contacts',
   initialState,
   reducers: {
-    addContact: {
-      reducer(state, action) {
-        // state.contacts.push(action.payload)
-
-        state.find(contact => contact.name.toLowerCase() === action.payload.name.toLowerCase()) === undefined ?
-        state.push(action.payload) : toast.error(`${action.payload.name} is already in contacts`)
-
-      },
-      prepare(contact) {
-        return {
-          payload: {
-            contact,
-            id: nanoid(),
-          },
-        };
-      },
+    addContact: (state, action) => {
+      state.contacts.push(action.payload);
     },
+
     deleteContact: (state, action) => {
-      const index = state.findIndex(
+      const index = state.contacts.findIndex(
         contact => contact.id === action.payload
       );
-      state.splice(index, 1);
+      state.contacts.splice(index, 1);
     },
   },
 });
