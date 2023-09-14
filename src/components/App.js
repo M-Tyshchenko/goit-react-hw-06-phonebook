@@ -1,4 +1,3 @@
-import { GlobalStyles } from './GlobalStyle';
 import { Container, MainTitle, Title } from './App.styled';
 import { ContactList } from './ContactList/ContactList';
 import { ContactForm } from './ContactForm/ContactForm';
@@ -55,7 +54,6 @@ export const App = () => {
       <ContactList contacts={visibleContacts} onDelete={deleteContact} />
 
       <Toaster />
-      <GlobalStyles />
     </Container>
   );
 };
