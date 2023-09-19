@@ -1,10 +1,10 @@
-import { useEffect } from 'react';
+// import { useEffect } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { DeleteBtn, List, ListItem, Marker } from './ContactList.styled';
 import { deleteContact } from 'redux/contactsSlice';
 import { getContacts, getFilterByName } from 'redux/selectors';
 
-const localStorageKey = 'contacts';
+// const localStorageKey = 'contacts';
 
 const getVisibleContacts = (contacts, filter) =>
   contacts.filter(contact =>
@@ -17,9 +17,9 @@ export const ContactList = () => {
   const visibleContacts = getVisibleContacts(contacts, filterByName);
   const dispatch = useDispatch();
 
-  useEffect(() => {
-    localStorage.setItem(localStorageKey, JSON.stringify(contacts));
-  }, [contacts]);
+  // useEffect(() => {
+  //   localStorage.setItem(localStorageKey, JSON.stringify(contacts));
+  // }, [contacts]);
 
   return (
     <List>
